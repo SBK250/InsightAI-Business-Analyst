@@ -1,7 +1,12 @@
 import pandas as pd
 import streamlit as st
 
-from services.data_loader import DataLoader
+try:
+    df = DataLoader.load_file(uploaded_file)
+
+except Exception as e:
+    st.error(f"Unable to load dataset: {e}")
+    st.stop()
 from services.profiler import DataProfiler
 
 # --------------------------------------------------
